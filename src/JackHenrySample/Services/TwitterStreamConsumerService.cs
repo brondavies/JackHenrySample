@@ -21,8 +21,8 @@ namespace JackHenrySample.Services
         long LastStatisticsUpdate = 0;
         int HashtagCount = Global.Settings.TopHashtagCount;
 
-        ConcurrentDictionary<string, long> stats = new();
-        ConcurrentDictionary<string, long> emoji = new();
+        public ConcurrentDictionary<string, long> stats = new();
+        public ConcurrentDictionary<string, long> emoji = new();
         public TwitterStreamConsumerService(
             ITwitterStreamService twitterStreamService,
             IHubContext<TweetStreamingHub> hubContext, 
@@ -60,7 +60,7 @@ namespace JackHenrySample.Services
             {
                 Increment(stats, hashtag);
             });
-            foreach (var match in emojiRegex.Matches(tweet.Text))
+            foreach (var match in emojiRegex.Matches(tweet.Text ?? ""))
             {
                 Increment(emoji, $"{match}");
             }

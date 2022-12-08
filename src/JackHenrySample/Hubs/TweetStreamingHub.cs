@@ -1,5 +1,4 @@
-﻿using JackHenrySample.Data.Twitter;
-using JackHenrySample.Hubs.Clients;
+﻿using JackHenrySample.Hubs.Clients;
 using Microsoft.AspNetCore.SignalR;
 
 namespace JackHenrySample.Hubs
@@ -13,7 +12,5 @@ namespace JackHenrySample.Hubs
             await Groups.AddToGroupAsync(Context.ConnectionId, "Watchers");
             await base.OnConnectedAsync();
         }
-
-        public async Task SendTweet(TweetData tweet) => await Clients.Group("Watchers").Tweet(tweet);
     }
 }
