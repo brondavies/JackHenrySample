@@ -1,0 +1,27 @@
+﻿@using JackHenrySample.Configuration
+@{
+    ViewData["Title"] = "Home Page";
+    var hashtagCount = Global.Settings.TopHashtagCount;
+}
+
+<div class="row">
+    <div class="col-3">
+        <div class="clearfix">
+        <h3>Top @hashtagCount Hashtags</h3>
+        <div id="hashtags" class="h5"></div>
+        </div>
+
+        <div class="clearfix">
+        <h3>Top @hashtagCount Emoji</h3>
+        <div id="emoji" class="h5"></div>
+        </div>
+    </div>
+    <div class="col-9">
+        <h3>Twitter Stream <button id="startstop" class="btn btn-lg">⏸</button></h3>
+        <ul id="tweets" class="d-flex flex-column-reverse list-unstyled"></ul>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
