@@ -22,7 +22,6 @@
 
         public string? TwitterConsumerSecret => GetString("TwitterConsumerSecret");
 
-
         public string? GetString(string key, string? defaultValue = null)
         {
             if (dictionary?.TryGetValue(key, out string? value) == true)
